@@ -2,7 +2,9 @@ import React, { useContext } from 'react';
 import PlanetsContext from '../context/PlanetsContext';
 
 const Table = () => {
-  const { planet } = useContext(PlanetsContext);
+  const { planet, filterByName } = useContext(PlanetsContext);
+  const inputName = filterByName.name;
+
   return (
     <div>
       <table>
@@ -24,41 +26,43 @@ const Table = () => {
           </tr>
         </thead>
         <tbody>
-          { planet.length > 0 && planet.map((eachPlanet) => {
-            const {
-              name,
-              rotation_period: rotation,
-              orbital_period: orbital,
-              diameter,
-              climate,
-              gravity,
-              terrain,
-              surface_water: surface,
-              population,
-              films,
-              created,
-              edited,
-              url,
+          { planet.length > 0 && planet
+            .filter((p) => p.name.includes(inputName))
+            .map((eachPlanet) => {
+              const {
+                name,
+                rotation_period: rotation,
+                orbital_period: orbital,
+                diameter,
+                climate,
+                gravity,
+                terrain,
+                surface_water: surface,
+                population,
+                films,
+                created,
+                edited,
+                url,
 
-            } = eachPlanet;
-            return (
-              <tr key={ name }>
-                <td>{name}</td>
-                <td>{rotation}</td>
-                <td>{orbital}</td>
-                <td>{diameter}</td>
-                <td>{climate}</td>
-                <td>{gravity}</td>
-                <td>{terrain}</td>
-                <td>{surface}</td>
-                <td>{population}</td>
-                <td>{films}</td>
-                <td>{created}</td>
-                <td>{edited}</td>
-                <td>{url}</td>
-              </tr>
-            );
-          })}
+              } = eachPlanet;
+              return (
+                <tr key={ name }>
+                  <td>{name}</td>
+                  <td>{rotation}</td>
+                  <td>{orbital}</td>
+                  <td>{diameter}</td>
+                  <td>{climate}</td>
+                  <td>{gravity}</td>
+                  <td>{terrain}</td>
+                  <td>{surface}</td>
+                  <td>{population}</td>
+                  <td>{films}</td>
+                  <td>{created}</td>
+                  <td>{edited}</td>
+                  <td>{url}</td>
+                </tr>
+              );
+            })}
         </tbody>
       </table>
     </div>
@@ -66,3 +70,8 @@ const Table = () => {
 };
 
 export default Table;
+
+// const getSpecies = data.species.filter((species) =>
+//     getIds.includes(species.id)).map((species) => species);
+
+//     planet.filter((p) => p.name.includes(inputName)).map((eachPlanet) => eachPlanet);
