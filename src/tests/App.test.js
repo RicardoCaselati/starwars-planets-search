@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import App from '../App';
 import mockAPI from './mock'
-import StarWarsProvider from '../context/StarWarsProvider';
+import PlanetsProvider from '../context/PlanetsProvider';
 import userEvent from '@testing-library/user-event';
 
 
@@ -12,7 +12,7 @@ describe('', () => {
     global.fetch.mockResolvedValue({
       json: jest.fn().mockResolvedValue(mockAPI),
     });
-    render(<StarWarsProvider><App /></StarWarsProvider>);
+    render(<PlanetsProvider><App /></PlanetsProvider>);
 
     const colunaObj = screen.getByTestId('column-filter')
     const operadorObj = screen.getByTestId('comparison-filter')
@@ -39,7 +39,7 @@ describe('', () => {
     global.fetch.mockResolvedValue({
       json: jest.fn().mockResolvedValue(mockAPI),
     });
-    render(<StarWarsProvider><App /></StarWarsProvider>);
+    render(<PlanetsProvider><App /></PlanetsProvider>);
 
     const colunaObj = screen.getByTestId('column-filter')
     const operadorObj = screen.getByTestId('comparison-filter')
@@ -67,7 +67,7 @@ describe('', () => {
     global.fetch.mockResolvedValue({
       json: jest.fn().mockResolvedValue(mockAPI),
     });
-    render(<StarWarsProvider><App /></StarWarsProvider>);
+    render(<PlanetsProvider><App /></PlanetsProvider>);
 
     const colunaObj = screen.getByTestId('column-filter')
     const operadorObj = screen.getByTestId('comparison-filter')
@@ -93,7 +93,7 @@ describe('', () => {
     global.fetch.mockResolvedValue({
       json: jest.fn().mockResolvedValue(mockAPI),
     });
-    render(<StarWarsProvider><App /></StarWarsProvider>);
+    render(<PlanetsProvider><App /></PlanetsProvider>);
 
     const inputObj = screen.getByTestId('name-filter')
 
